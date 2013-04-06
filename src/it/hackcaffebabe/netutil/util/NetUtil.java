@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * This class provide the common and useful functionality for working with network.
  * 
- * <br><br>Copyright &copy 2013. All rights reserved. 
+ * <br>
  * @author Andrea Ghizzoni. More info at andrea.ghz@gmail.com
  *
  */

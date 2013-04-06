@@ -45,7 +45,7 @@ import com.sun.mail.smtp.SMTPTransport;
  * </code>
  * </p>
  * 
- * <br><br>Copyright &copy 2013. All rights reserved. 
+ * <br> 
  * @author Andrea Ghizzoni. More info at andrea.ghz@gmail.com
  *
  */

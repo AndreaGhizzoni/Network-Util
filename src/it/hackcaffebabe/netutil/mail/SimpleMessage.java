@@ -32,7 +32,7 @@ import javax.mail.internet.MimeMultipart;
  * </p>
  * Remember to use null attachment list to send email without attachments.
  * 
- * <br><br>Copyright &copy 2013. All rights reserved. 
+ * <br>
  * @author Andrea Ghizzoni. More info at andrea.ghz@gmail.com
  *
  */
