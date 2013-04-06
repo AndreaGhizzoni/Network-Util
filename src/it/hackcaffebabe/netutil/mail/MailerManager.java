@@ -5,9 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-import javax.mail.Authenticator;
 import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import com.sun.mail.smtp.SMTPTransport;
@@ -161,38 +159,5 @@ public class MailerManager
 		
 		this.properties = new Properties();
 		this.properties.load( new FileInputStream( configurationFile.getAbsolutePath() ) );		
-	}
-	
-	
-/*====================================================================================================*/
-/*====================================================================================================*/
-/*																									  */
-/*										   		INNER CLASS										      */	
-/*																									  */
-/*====================================================================================================*/
-/*====================================================================================================*/
-	/**
-	 * private class that describe the authentication feature.
-	 */
-	private class AuthenticationFactory
-	{
-		private String user, password;
-		
-		public AuthenticationFactory( String user, String password ) throws IllegalArgumentException
-		{
-			this.user = user;
-			this.password = password;
-		}
-		
-		public Authenticator getAuthenticator()
-		{
-			return new Authenticator()
-			{
-				protected PasswordAuthentication getPasswordAuthentication()
-				{
-					return new PasswordAuthentication( user, password );
-				}
-			};
-		}
 	}
 }
