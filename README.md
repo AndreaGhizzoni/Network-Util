@@ -1,1 +1,1 @@
-## Utility library to work with network and send email over STMP (SSL)
+## Utility library to develop with network and send email over STMP (SSL)
