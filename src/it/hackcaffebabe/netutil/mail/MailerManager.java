@@ -53,6 +53,8 @@ public class MailerManager
 	private Properties properties;
 	/**The current session opened by the user*/
 	private Session currentSession;
+	/**The transport that send the email*/
+	private SMTPTransport transport;
 	
 	/**
 	 * Instance a Mailer object that provides utilities to login into mail server and to send the email.<br>
@@ -103,8 +105,8 @@ public class MailerManager
 			throw new IllegalArgumentException( "Password given can not be null or empty" );
 		
 		Session session = Session.getInstance( this.properties, new AuthenticationFactory( user, password ).getAuthenticator() );
-		SMTPTransport transport = (SMTPTransport)session.getTransport("smtp");
-		transport.connect( this.properties.getProperty( "mail.smtp.host" ), user, password );
+		this.transport = (SMTPTransport)session.getTransport("smtp");
+		this.transport.connect( this.properties.getProperty( "mail.smtp.host" ), user, password );
 		
 		this.currentSession = session;
 		return this.currentSession;
@@ -138,7 +140,7 @@ public class MailerManager
 		if( this.currentSession != null)
 			throw new MessagingException( "You are not logged in. Use Mailer.login( String, String ) first." );
 
-		this.currentSession = null;
+		this.transport.close();
 	}
 	
 	
