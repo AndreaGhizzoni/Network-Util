@@ -60,14 +60,14 @@ public class SimpleMessage extends MimeMessage
 /*====================================================================================================*/
 /*====================================================================================================*/
 	/**
-	 * This method returns a list of {@link Email} from a string given. <br>
+	 * This method returns a list of {@link NetUser} from a string given. <br>
 	 * That string must be in format <email>; <email>; ecc..<br>
 	 * NB: If there is only one email, the format must be <email>;
 	 * @param emails {@link String} formatted like <email>; <email>; <email>; ... 
-	 * @return {@link ArrayList} of {@link Email}
+	 * @return {@link ArrayList} of {@link NetUser}
 	 * @throws IllegalArgumentException {@link Exception} if input string is not in format or null;
 	 */
-	public static ArrayList<Email> parseEmails( String emails )  throws IllegalArgumentException
+	public static ArrayList<NetUser> parseEmails( String emails )  throws IllegalArgumentException
 	{
 		StringTokenizer token = new StringTokenizer( emails, ";" );
 		if( token.countTokens() == 1 )
@@ -77,9 +77,9 @@ public class SimpleMessage extends MimeMessage
 				throw new IllegalArgumentException( "String to parse is not in format <email>; <email>; <email>; .." );
 		}
 		
-		ArrayList<Email> emailsList = new ArrayList<>();
+		ArrayList<NetUser> emailsList = new ArrayList<>();
 		while( token.hasMoreTokens() )
-			emailsList.add( new Email( token.nextToken().trim() ) );		
+			emailsList.add( new NetUser( token.nextToken().trim() ) );		
 		
 		return emailsList;
 	}
@@ -94,12 +94,12 @@ public class SimpleMessage extends MimeMessage
 /*====================================================================================================*/
 	/**
 	 * Sets the email sender.
-	 * @param sender {@link Email} email.
+	 * @param sender {@link NetUser} email.
 	 * @throws IllegalArgumentException {@link Exception} if sender email given is null.
 	 * @throws MessagingException {@link Exception} if there are problem with adding sender email.
 	 * @throws AddressException {@link Exception} if there are problem with adding sender email.  
 	 */
-	public void setSender( Email sender ) throws IllegalArgumentException, AddressException, MessagingException
+	public void setSender( NetUser sender ) throws IllegalArgumentException, AddressException, MessagingException
 	{
 		if( sender == null )
 			throw new IllegalArgumentException( "Sender email can not be null" );
@@ -110,12 +110,12 @@ public class SimpleMessage extends MimeMessage
 	
 	/**
 	 * Sets new recipient of email.
-	 * @param recipient {@link Email} of email.
+	 * @param recipient {@link NetUser} of email.
 	 * @throws IllegalArgumentException {@link Exception} if recipient email given is null.
 	 * @throws MessagingException {@link Exception} if there are problem with adding recipient email.
 	 * @throws AddressException {@link Exception} if there are problem with adding recipient email. 
 	 */
-	public void setRecipient( Email recipient ) throws IllegalArgumentException, AddressException, MessagingException
+	public void setRecipient( NetUser recipient ) throws IllegalArgumentException, AddressException, MessagingException
 	{
 		if( recipient == null )
 			throw new IllegalArgumentException( "Recipient email can not be null" );
@@ -130,7 +130,7 @@ public class SimpleMessage extends MimeMessage
 	 * @throws MessagingException {@link Exception} if there are problem with adding recipient email.
 	 * @throws AddressException {@link Exception} if there are problem with adding recipient email.
 	 */
-	public void setRecipients( List<Email> listOfRecipients ) throws IllegalArgumentException, MessagingException
+	public void setRecipients( List<NetUser> listOfRecipients ) throws IllegalArgumentException, MessagingException
 	{
 		if( listOfRecipients == null || listOfRecipients.isEmpty() )
 			throw new IllegalArgumentException( "List of recipients can not be null or empty." );

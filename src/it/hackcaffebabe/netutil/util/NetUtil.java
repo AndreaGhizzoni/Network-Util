@@ -12,9 +12,8 @@ import java.util.Enumeration;
 import java.util.List;
 
 /**
- * This class provide the common and useful functionality for working with network.
+ * This class provide the common and useful functionality for working with network.<br>
  * 
- * <br>
  * @author Andrea Ghizzoni. More info at andrea.ghz@gmail.com
  *
  */
@@ -26,21 +25,21 @@ public class NetUtil
 	 * @return {@link Boolean} true if it can create an HTTP connection with Google servers, otherwise false.
 	 */
 	public static boolean isInternetReachable()
-    {
-        try 
-        {
-            //make a URL to a known source
-            URL url = new URL( "http://173.194.35.179/" );
-
-            //Open a connection to that source.
-            //Trying to retrieve data from the source. 
-            //If there is no connection, this line will fail
-            ( (HttpURLConnection)url.openConnection() ).getContent();
-            return true;
-        } 
-        catch( UnknownHostException e ) { return false; }
-        catch( IOException e ) { return false; }
-    }
+	{
+	    try 
+	    {
+	        //make a URL to a known source
+		    URL url = new URL( "http://173.194.35.179/" );
+		
+		    //Open a connection to that source.
+		    //Trying to retrieve data from the source. 
+		    //If there is no connection, this line will fail
+		    ( (HttpURLConnection)url.openConnection() ).getContent();
+	        return true;
+	    } 
+	    catch( UnknownHostException e ) { return false; }
+	    catch( IOException e ) { return false; }
+	}
 	
 	
 	/**
@@ -84,7 +83,7 @@ public class NetUtil
 		byte[] mac = inte.getHardwareAddress();
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < mac.length; i++)
-			sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? "-" : ""));		
+			sb.append(String.format("%02X%s", mac[i], (i < mac.length - 1) ? ":" : ""));		
 		return sb.toString();
 	}
 }

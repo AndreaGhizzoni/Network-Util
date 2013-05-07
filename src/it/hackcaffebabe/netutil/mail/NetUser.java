@@ -17,7 +17,7 @@ import java.util.StringTokenizer;
  * @author Andrea Ghizzoni. More info at andrea.ghz@gmail.com
  *
  */
-public class Email implements Serializable, Comparable<Email>
+public class NetUser implements Serializable, Comparable<NetUser>
 {
 	private static final long serialVersionUID = -5042718788066202845L;
 	private String email;
@@ -29,7 +29,7 @@ public class Email implements Serializable, Comparable<Email>
 	 * Instance a void email with no argument.<br>
 	 * Use {@code setEmail( "someEmail@someDomani.abc")} to set and validate the email. 
 	 */
-	public Email(){}
+	public NetUser(){}
 	
 	
 	/**
@@ -37,7 +37,7 @@ public class Email implements Serializable, Comparable<Email>
 	 * @param email {@link String} representing email.
 	 * @throws IllegalArgumentException {@link Exception} if email given is null or not in the correct format.
 	 */
-	public Email( String email ) throws IllegalArgumentException
+	public NetUser( String email ) throws IllegalArgumentException
 	{
 		this.setEmail( email );
 	}	
@@ -124,7 +124,7 @@ public class Email implements Serializable, Comparable<Email>
 /*====================================================================================================*/
 /*====================================================================================================*/
 	@Override
-	public int compareTo( Email o )
+	public int compareTo( NetUser o )
 	{
 		return this.email.compareTo( o.email );
 	}
@@ -158,7 +158,7 @@ public class Email implements Serializable, Comparable<Email>
 			return false;
 		if ( getClass() != obj.getClass() )
 			return false;
-		Email other = ( Email ) obj;
+		NetUser other = ( NetUser ) obj;
 		if ( email == null )
 		{
 			if ( other.email != null )
