@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
  * To instance an object of this class you could use the appropriate constructor or the setter method.
  * <p>
  * <code>
- * Email e = new Email();<br>
+ * NetUser e = new NetUser();<br>
  * e.setEmail( "some.email@somedomanin.asd" );
  * </code>
  * </p>
@@ -39,7 +39,7 @@ public class NetUser implements Serializable, Comparable<NetUser>
 	 */
 	public NetUser( String email ) throws IllegalArgumentException
 	{
-		this.setEmail( email );
+		this.setAddress( email );
 	}	
 	
 
@@ -103,7 +103,7 @@ public class NetUser implements Serializable, Comparable<NetUser>
 	 * @param email {@link String} represent new Email.
 	 * @throws IllegalArgumentException {@link Exception} if argument is null, empty or invalid email.
 	 */
-	public void setEmail( String email ) throws IllegalArgumentException
+	public void setAddress( String email ) throws IllegalArgumentException
 	{
 		if( email == null || email.isEmpty() )
 			throw new IllegalArgumentException( "Email given can not be empty or null." );
