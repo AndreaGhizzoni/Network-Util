@@ -20,6 +20,28 @@ import java.util.List;
 public class NetUtil
 {
 	/**
+	 * This method check if is reachable an Internet Connection with a custom {@link URL} given..<br>
+	 * @param urlToTest {@link URL} URL to test the if is reachable.
+	 * @return {@link Boolean} true if URL is reachable, otherwise false.
+	 */
+	public static boolean isInternetReachable( URL urlToTest )
+	{
+		if( urlToTest == null ) return false;
+		
+		try
+		{
+			//Open a connection to that source.
+		    //Trying to retrieve data from the source. 
+		    //If there is no connection, this line will fail
+		    ( (HttpURLConnection)urlToTest.openConnection() ).getContent();
+	        return true;
+		} 
+		catch( UnknownHostException e ) { return false; }
+		catch( IOException e ) { return false; }
+	}
+	
+	
+	/**
 	 * This method check if is reachable an Internet Connection.<br>
 	 * To do that it creates an HTTP connection with Google servers.
 	 * @return {@link Boolean} true if it can create an HTTP connection with Google servers, otherwise false.
