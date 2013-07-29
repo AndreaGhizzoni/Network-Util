@@ -45,6 +45,7 @@ import com.sun.mail.smtp.SMTPTransport;
  * 
  * <br> 
  * @author Andrea Ghizzoni. More info at andrea.ghz@gmail.com
+ * @version 1.0
  *
  */
 public class MailerManager
@@ -72,32 +73,25 @@ public class MailerManager
 	 * </p>
 	 * 
 	 * @param configurationFile {@link File} the configuration file that describe the mail server connection.
-	 * @throws IOException {@link Exception} if the configuration file are not a properties file.
-	 * @throws IllegalArgumentException {@link Exception} if configuration file is null.
+	 * @throws IOException if the configuration file are not a properties file.
+	 * @throws IllegalArgumentException if configuration file is null.
 	 */
-	public MailerManager( File configurationFile ) throws IllegalArgumentException, IOException
-	{
+	public MailerManager( File configurationFile ) throws IllegalArgumentException, IOException{
 		this.setProperties( configurationFile );
 	}
 	
-	
-/*====================================================================================================*/
-/*====================================================================================================*/
-/*																									  */
-/*										   		METHODS												  */	
-/*																									  */
-/*====================================================================================================*/
-/*====================================================================================================*/
+//====================================================================================================//
+// METHOD
+//====================================================================================================//	
 	/**
 	 * This method create a new session with the personal account of mail server.
 	 * @param user {@link String} user name to login with mail server.
 	 * @param password {@link String} password to login with mail server.
 	 * @return {@link Session} the session created with user name and password given.
-	 * @throws MessagingException {@link Exception} if login fail.
-	 * @throws IllegalArgumentException {@link Exception} if user or password are null or empty string.
+	 * @throws MessagingException if login fail.
+	 * @throws IllegalArgumentException if user or password are null or empty string.
 	 */
-	public Session login( String user, String password ) throws IllegalArgumentException, MessagingException
-	{
+	public Session login( String user, String password ) throws IllegalArgumentException, MessagingException{
 		if( user == null || user.isEmpty() )
 			throw new IllegalArgumentException( "User given can not be null or empty" );
 		
@@ -116,11 +110,10 @@ public class MailerManager
 	/**
 	 * This method sends the email at mail server configured.
 	 * @param message {@link SimpleMessage} object represent the email to send.
-	 * @throws IllegalArgumentException {@link Exception} if {@link SimpleMessage} given is null.
-	 * @throws MessagingException {@link Exception} if you are not logged in or sending fail.
+	 * @throws IllegalArgumentException if {@link SimpleMessage} given is null.
+	 * @throws MessagingException if you are not logged in or sending fail.
 	 */
-	public void send( SimpleMessage message ) throws IllegalArgumentException, MessagingException
-	{
+	public void send( SimpleMessage message ) throws IllegalArgumentException, MessagingException{
 		if( message == null )
 			throw new IllegalArgumentException( "Message to send can not be null." );
 	
@@ -135,27 +128,20 @@ public class MailerManager
 	 * Close the current opened session.
 	 * @throws MessagingException {@link Exception} if you are not logged in.
 	 */
-	public void logout() throws MessagingException
-	{
+	public void logout() throws MessagingException{
 		if( this.currentSession != null)
 			throw new MessagingException( "You are not logged in. Use Mailer.login( String, String ) first." );
 
 		this.transport.close();
 	}
 	
-	
-/*====================================================================================================*/
-/*====================================================================================================*/
-/*																									  */
-/*										   		SETTER											      */	
-/*																									  */
-/*====================================================================================================*/
-/*====================================================================================================*/
+//====================================================================================================//
+// SETTER
+//====================================================================================================//	
 	/**
 	 * Sets the connection properties from file.
 	 */
-	private void setProperties( File configurationFile ) throws IllegalArgumentException, IOException
-	{
+	private void setProperties( File configurationFile ) throws IllegalArgumentException, IOException{
 		if( !configurationFile.exists() )
 			throw new FileNotFoundException( "Mail configuration file not found." );
 		

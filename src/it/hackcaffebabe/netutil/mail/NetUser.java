@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
  * 
  * <br>
  * @author Andrea Ghizzoni. More info at andrea.ghz@gmail.com
- *
+ * @version 1.0
  */
 public class NetUser implements Serializable, Comparable<NetUser>
 {
@@ -23,7 +23,6 @@ public class NetUser implements Serializable, Comparable<NetUser>
 	private String email;
 	private String user;
 	private String domain;	
-	
 	
 	/**
 	 * Instance a void email with no argument.<br>
@@ -37,74 +36,49 @@ public class NetUser implements Serializable, Comparable<NetUser>
 	 * @param email {@link String} representing email.
 	 * @throws IllegalArgumentException {@link Exception} if email given is null or not in the correct format.
 	 */
-	public NetUser( String email ) throws IllegalArgumentException
-	{
+	public NetUser( String email ) throws IllegalArgumentException{
 		this.setAddress( email );
 	}	
-	
 
-/*====================================================================================================*/
-/*====================================================================================================*/
-/*																									  */
-/*												GETTER											  	  */	
-/*																									  */
-/*====================================================================================================*/
-/*====================================================================================================*/
+//====================================================================================================//
+// GETTER
+//====================================================================================================//	
 	/**
 	 * Return the Email in format uuuu.uuuu@dddd.dd.
 	 * @return {@link String} represent the Email.
 	 */
-	public String getEmail()
-	{
-		return this.email;
-	}
-	
+	public String getEmail(){ return this.email; }
 	
 	/**
 	 * Return the domain part of EMail.
 	 * @return {@link String} represent the domain part of EMail.
 	 */
-	public String getDomain()
-	{
-		return this.domain;
-	}
-	
+	public String getDomain(){ return this.domain; }
 	
 	/**
 	 * Return the user part of EMail.
 	 * @return {@link String} represent the user part of EMail.
 	 */
-	public String getUser()
-	{
-		return user;
-	}
-	
+	public String getUser(){ return user; }
 	
 	/**
 	 * this method set user and domain class attributes
 	 */
-	private void getMoreInformation( String email )
-	{
+	private void getMoreInformation( String email ){
 		StringTokenizer parse = new StringTokenizer( email, "@" );
 		this.user = parse.nextToken();		
 		this.domain = parse.nextToken();
 	}
 	
-	
-/*====================================================================================================*/
-/*====================================================================================================*/
-/*																									  */
-/*											     SETTER											      */	
-/*																									  */
-/*====================================================================================================*/
-/*====================================================================================================*/
+//====================================================================================================//
+// SETTER
+//====================================================================================================//	
 	/**
 	 * Set new Email in format uuuu.uuuu@dddd.dd.
 	 * @param email {@link String} represent new Email.
-	 * @throws IllegalArgumentException {@link Exception} if argument is null, empty or invalid email.
+	 * @throws IllegalArgumentException if argument is null, empty or invalid email.
 	 */
-	public void setAddress( String email ) throws IllegalArgumentException
-	{
+	public void setAddress( String email ) throws IllegalArgumentException{
 		if( email == null || email.isEmpty() )
 			throw new IllegalArgumentException( "Email given can not be empty or null." );
 			
@@ -115,31 +89,19 @@ public class NetUser implements Serializable, Comparable<NetUser>
 		this.getMoreInformation( email );
 	}
 	
-	
-/*====================================================================================================*/
-/*====================================================================================================*/
-/*																									  */
-/*											OVERRIDED METHOD										  */
-/*																									  */
-/*====================================================================================================*/
-/*====================================================================================================*/
+//====================================================================================================//
+// OVERRIDE
+//====================================================================================================//	
 	@Override
-	public int compareTo( NetUser o )
-	{
+	public int compareTo( NetUser o ){
 		return this.email.compareTo( o.email );
 	}
 	
+	@Override
+	public String toString(){ return this.email; }
 	
 	@Override
-	public String toString()
-	{
-		return this.email;
-	}
-	
-	
-	@Override
-	public int hashCode()
-	{
+	public int hashCode(){
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((domain == null) ? 0 : domain.hashCode());
@@ -147,11 +109,9 @@ public class NetUser implements Serializable, Comparable<NetUser>
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
-
 		
 	@Override
-	public boolean equals( Object obj )
-	{
+	public boolean equals( Object obj ){
 		if ( this == obj )
 			return true;
 		if ( obj == null )
@@ -159,8 +119,7 @@ public class NetUser implements Serializable, Comparable<NetUser>
 		if ( getClass() != obj.getClass() )
 			return false;
 		NetUser other = ( NetUser ) obj;
-		if ( email == null )
-		{
+		if ( email == null ){
 			if ( other.email != null )
 				return false;
 		}
